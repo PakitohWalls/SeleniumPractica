@@ -32,12 +32,12 @@ namespace SeleniumPractica
 
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            //String sModelo = modelo.Text;
-            //String sMarca = marcas.SelectedItem.ToString();
+            String sModelo = modelo.Text;
+            String sMarca = marcas.SelectedItem.ToString();
             Console.WriteLine(fnacCheck.Checked);
             Console.WriteLine(PcComponentesCheck.Checked);
             Console.WriteLine(marcas.SelectedItem);
-            IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica\\");
+            IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
             if (amazonCheck.Checked)
             {
                 AmazonSearch amazon = new AmazonSearch(driver);
@@ -52,7 +52,8 @@ namespace SeleniumPractica
 
             if (PcComponentesCheck.Checked)
             {
-            
+                PcCompSearch pcc = new PcCompSearch(driver);
+                pcc.search(sMarca, sModelo);
             }
 
         }

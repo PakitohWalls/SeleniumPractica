@@ -32,16 +32,14 @@ namespace SeleniumPractica
 
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            //String sModelo = modelo.Text;
-            //String sMarca = marcas.SelectedItem.ToString();
-            Console.WriteLine(fnacCheck.Checked);
-            Console.WriteLine(PcComponentesCheck.Checked);
-            Console.WriteLine(marcas.SelectedItem);
+            String sModelo = modelo.Text;
+            String sMarca = marcas.SelectedItem.ToString();
             IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica\\");
             if (amazonCheck.Checked)
             {
                 AmazonSearch amazon = new AmazonSearch(driver);
-                amazon.search("", "" );
+                List<Telefono> preciosAmazon = amazon.Search(sMarca, sModelo);
+                foreach(Telefono tel in preciosAmazon) { Console.WriteLine(tel.ToString()); }
 
             }
 

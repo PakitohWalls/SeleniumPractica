@@ -41,7 +41,7 @@ namespace SeleniumPractica
             if (amazonCheck.Checked)
             {
                 AmazonSearch amazon = new AmazonSearch(driver);
-                amazon.search("", "" );
+                amazon.search(sMarca, sModelo );
 
             }
 

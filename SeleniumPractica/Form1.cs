@@ -34,12 +34,14 @@ namespace SeleniumPractica
         {
             String sModelo = modelo.Text;
             String sMarca = marcas.SelectedItem.ToString();
-            IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica\\");
+            Console.WriteLine(fnacCheck.Checked);
+            Console.WriteLine(PcComponentesCheck.Checked);
+            Console.WriteLine(marcas.SelectedItem);
+            IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
             if (amazonCheck.Checked)
             {
                 AmazonSearch amazon = new AmazonSearch(driver);
-                List<Telefono> preciosAmazon = amazon.Search(sMarca, sModelo);
-                foreach(Telefono tel in preciosAmazon) { Console.WriteLine(tel.ToString()); }
+                amazon.search("", "" );
 
             }
 
@@ -50,7 +52,8 @@ namespace SeleniumPractica
 
             if (PcComponentesCheck.Checked)
             {
-            
+                PcCompSearch pcc = new PcCompSearch(driver);
+                pcc.search(sMarca, sModelo);
             }
 
         }

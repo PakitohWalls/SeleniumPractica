@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+
+namespace SeleniumPractica
+{
+    public partial class Form1 : Form
+    {
+        
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void botonBuscar_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(amazonCheck.Checked);
+            Console.WriteLine(fnacCheck.Checked);
+            Console.WriteLine(PcComponentesCheck.Checked);
+            Console.WriteLine(marcas.SelectedItem);
+            Console.WriteLine(modelo.Text);
+            IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica\\");
+            driver.Url = "https://www.google.es/";
+
+        }
+    }
+}

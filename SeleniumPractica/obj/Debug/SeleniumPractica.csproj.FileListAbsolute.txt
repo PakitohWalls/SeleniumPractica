@@ -27,3 +27,19 @@ D:\Escritorio\IEI - Pract 2\SeleniumPractica\SeleniumPractica\obj\Debug\Selenium
 D:\Escritorio\IEI - Pract 2\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.csproj.CopyComplete
 D:\Escritorio\IEI - Pract 2\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.exe
 D:\Escritorio\IEI - Pract 2\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.pdb
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\bin\Debug\SeleniumPractica.exe.config
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\bin\Debug\SeleniumPractica.exe
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\bin\Debug\SeleniumPractica.pdb
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\bin\Debug\Selenium.WebDriverBackedSelenium.dll
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\bin\Debug\WebDriver.dll
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\bin\Debug\WebDriver.Support.dll
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\bin\Debug\Selenium.WebDriverBackedSelenium.xml
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\bin\Debug\WebDriver.xml
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\bin\Debug\WebDriver.Support.xml
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.csprojAssemblyReference.cache
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.Form1.resources
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.Properties.Resources.resources
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.csproj.GenerateResource.cache
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.csproj.CopyComplete
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.exe
+C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica\obj\Debug\SeleniumPractica.pdb

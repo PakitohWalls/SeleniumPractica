@@ -31,14 +31,19 @@ namespace SeleniumPractica
             WebDriverWait lateWait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             lateWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[2]/div[1]/div/div[1]/div[2]/ul/li[1]/ul/li[1]/span"))).Click();
 
-            IReadOnlyCollection<IWebElement> listaElementos = driver.FindElements(By.XPath("/html/body/div[3]/div/div[7]/div"));
+            IReadOnlyCollection<IWebElement> listaElementos = driver.FindElements(By.ClassName("Article-item")).ToList();
 
-            foreach(IWebElement elem in listaElementos)
+            foreach (IWebElement elem in listaElementos)
             {
-                string precio = elem.FindElement(By.ClassName(".userPrice")).Text;
-                string nombre = elem.FindElement(By.ClassName(".Article-title")).Text;
-                list.Add(new Telefono(nombre, precio));
+                //Console.WriteLine(elem.FindElement(By.ClassName(".userPrice")));
+                string nombre = elem.FindElement(By.ClassName("Article-title")).Text;
+                //string precio = elem.FindElement(By.ClassName("userPrice")).Text;
+                //Console.WriteLine(elem.FindElement(By.ClassName(".Article-desc")).Text);
+                Console.WriteLine(nombre);
+                //list.Add(new Telefono(nombre, precio));
             }
+
+            driver.Quit();
 
             return list;
         }

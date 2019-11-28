@@ -35,6 +35,8 @@
             this.marcas = new System.Windows.Forms.ComboBox();
             this.botonBuscar = new System.Windows.Forms.Button();
             this.resultList = new System.Windows.Forms.ListBox();
+            this.modelErrorLabel = new System.Windows.Forms.Label();
+            this.checkboxErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // amazonCheck
@@ -127,11 +129,32 @@
             this.resultList.TabIndex = 6;
             this.resultList.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
+            // modelErrorLabel
+            // 
+            this.modelErrorLabel.AutoSize = true;
+            this.modelErrorLabel.Location = new System.Drawing.Point(1063, 38);
+            this.modelErrorLabel.Name = "modelErrorLabel";
+            this.modelErrorLabel.Size = new System.Drawing.Size(0, 17);
+            this.modelErrorLabel.TabIndex = 7;
+            this.modelErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.modelErrorLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // checkboxErrorLabel
+            // 
+            this.checkboxErrorLabel.AutoSize = true;
+            this.checkboxErrorLabel.Location = new System.Drawing.Point(1063, 71);
+            this.checkboxErrorLabel.Name = "checkboxErrorLabel";
+            this.checkboxErrorLabel.Size = new System.Drawing.Size(0, 17);
+            this.checkboxErrorLabel.TabIndex = 8;
+            this.checkboxErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1359, 804);
+            this.Controls.Add(this.checkboxErrorLabel);
+            this.Controls.Add(this.modelErrorLabel);
             this.Controls.Add(this.resultList);
             this.Controls.Add(this.botonBuscar);
             this.Controls.Add(this.marcas);
@@ -156,6 +179,8 @@
         private System.Windows.Forms.ComboBox marcas;
         private System.Windows.Forms.Button botonBuscar;
         private System.Windows.Forms.ListBox resultList;
+        private System.Windows.Forms.Label modelErrorLabel;
+        private System.Windows.Forms.Label checkboxErrorLabel;
     }
 }
 

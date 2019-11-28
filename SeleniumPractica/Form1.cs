@@ -53,7 +53,7 @@ namespace SeleniumPractica
             IWebDriver driver = new ChromeDriver("C:\\Users\\tomas\\Desktop\\SeleniumPractica\\SeleniumPractica");
             //tomas - C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica
             String sMarca = marcas.SelectedItem.ToString();
-            String sModelo = modelo.Text.Equals("Selecciona un modelo") ? "" : marcas.SelectedItem.ToString();
+            String sModelo = modelo.Text.Equals("Selecciona un modelo") ? "" : modelo.Text;
 
             if (amazonCheck.Checked)
             {
@@ -72,26 +72,17 @@ namespace SeleniumPractica
             {
                 PcCompSearch pcc = new PcCompSearch(driver);
                 List<Telefono> telefonosPcComp  = pcc.search(sMarca, sModelo);
-                foreach (Telefono telf in telefonosPcComp) {
-                    result.Add(telf.ToString());
+                if (telefonosPcComp.Count() != 0)
+                {
+                    foreach (Telefono telf in telefonosPcComp)
+                    {
+                        result.Add(telf.ToString());
+                    }
                 }
+                else { result.Add("Sin resultados en PcComponentes"); }
+               
             }
             resultList.DataSource = result;
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void marcas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

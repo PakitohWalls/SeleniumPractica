@@ -14,6 +14,7 @@ namespace SeleniumPractica
 {
     public partial class Form1 : Form
     {
+        List<String> result = new List<String>();
         
         public Form1()
         {
@@ -32,27 +33,54 @@ namespace SeleniumPractica
 
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            String sModelo = modelo.Text;
-            String sMarca = marcas.SelectedItem.ToString();
+            if (marcas.SelectedItem is null)
+            {
+                modelErrorLabel.Text = "Debes seleccionar una marca";
+                return;
+            }
+            else { modelErrorLabel.Text = ""; }
+
+            if (!fnacCheck.Checked && !PcComponentesCheck.Checked && !amazonCheck.Checked)
+            {
+                checkboxErrorLabel.Text = "Selecciona al menos una tienda";
+                return;
+            }
+            else { checkboxErrorLabel.Text = ""; }
+
+            resultList.DataSource = null;
+            result.Clear();
+
             IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
+            String sMarca = marcas.SelectedItem.ToString();
+            String sModelo = modelo.Text.Equals("Selecciona un modelo") ? "" : modelo.Text;
+
             if (amazonCheck.Checked)
             {
                 AmazonSearch amazon = new AmazonSearch(driver);
-                amazon.Search(sMarca, sModelo );
+                List<Telefono> telefonosAmazon = amazon.Search(sMarca, sModelo);
 
             }
 
             if (fnacCheck.Checked)
             { 
-            
+                 //Va Tomás hostiaa
             }
 
             if (PcComponentesCheck.Checked)
             {
                 PcCompSearch pcc = new PcCompSearch(driver);
-                pcc.search(sMarca, sModelo);
+                List<Telefono> telefonosPcComp  = pcc.search(sMarca, sModelo);
+                if (telefonosPcComp.Count() != 0)
+                {
+                    foreach (Telefono telf in telefonosPcComp)
+                    {
+                        result.Add(telf.ToString());
+                    }
+                }
+                else { result.Add("Sin resultados en PcComponentes"); }
+               
             }
-
+            resultList.DataSource = result;
         }
     }
 }

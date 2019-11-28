@@ -14,6 +14,7 @@ namespace SeleniumPractica
 {
     public partial class Form1 : Form
     {
+        List<String> result = new List<String>();
         
         public Form1()
         {
@@ -32,9 +33,9 @@ namespace SeleniumPractica
 
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            String sModelo = modelo.Text;
             String sMarca = marcas.SelectedItem.ToString();
-            IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
+            String sModelo = modelo.Text.Equals("Selecciona un modelo") ? "" : marcas.SelectedItem.ToString();
+            IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
             if (amazonCheck.Checked)
             {
                 AmazonSearch amazon = new AmazonSearch(driver);
@@ -50,8 +51,21 @@ namespace SeleniumPractica
             if (PcComponentesCheck.Checked)
             {
                 PcCompSearch pcc = new PcCompSearch(driver);
-                pcc.search(sMarca, sModelo);
+                List<Telefono> telefonosPcComp  = pcc.search(sMarca, sModelo);
+                foreach (Telefono telf in telefonosPcComp) {
+                    result.Add(telf.ToString());
+                }
             }
+            resultList.DataSource = result;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void marcas_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

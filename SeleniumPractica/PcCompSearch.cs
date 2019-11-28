@@ -12,6 +12,7 @@ namespace SeleniumPractica
     public class PcCompSearch
     {
         IWebDriver driver;
+        List<Telefono> result = new List<Telefono>();
         public PcCompSearch(IWebDriver driver)
         {
             this.driver = driver;
@@ -20,7 +21,7 @@ namespace SeleniumPractica
 
         }
 
-        public void search(String marca, String modelo)
+        public List<Telefono> search(String marca, String modelo)
         {
             try
             {
@@ -51,10 +52,15 @@ namespace SeleniumPractica
             Console.WriteLine(smartCollection.Count);
             foreach (IWebElement elem in smartCollection)
             {
-                Console.WriteLine(elem.FindElement(By.ClassName("title")).Text);
-                Console.WriteLine(elem.FindElement(By.ClassName("price")).Text);
+                try
+                {
+                    Telefono current = new Telefono(elem.FindElement(By.ClassName("title")).Text, elem.FindElement(By.ClassName("price")).Text);
+                    result.Add(current);
+                }
+                catch (Exception e) { Console.WriteLine("Exception: " + e.Message); }
             }
-
+            driver.Quit();
+            return result;
         }
     }
 }

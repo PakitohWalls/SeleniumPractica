@@ -52,7 +52,7 @@ namespace SeleniumPractica
 
             IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
             String sMarca = marcas.SelectedItem.ToString();
-            String sModelo = modelo.Text.Equals("Selecciona un modelo") ? "" : marcas.SelectedItem.ToString();
+            String sModelo = modelo.Text.Equals("Selecciona un modelo") ? "" : modelo.Text;
 
             if (amazonCheck.Checked)
             {

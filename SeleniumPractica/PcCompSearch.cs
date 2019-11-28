@@ -13,12 +13,25 @@ namespace SeleniumPractica
     {
         IWebDriver driver;
         List<Telefono> result = new List<Telefono>();
+
         public PcCompSearch(IWebDriver driver)
         {
             this.driver = driver;
             //driver.Manage().Window.Maximize();
             driver.Url = "https://www.pccomponentes.com/";
 
+        }
+
+        public IWebElement search4Smartphone (IReadOnlyCollection<IWebElement> list)
+        {
+            foreach (IWebElement elem in list)
+            {
+                if (elem.Text.Contains("Smartphone/"))
+                {
+                    return elem;
+                }
+            }
+            return null;
         }
 
         public List<Telefono> search(String marca, String modelo)
@@ -39,13 +52,21 @@ namespace SeleniumPractica
             IWebElement filter = (new WebDriverWait(driver, TimeSpan.FromSeconds(20)))
             .Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/header/div[3]/div[2]/aside/div[3]/div[2]/div/ul/li[2]/div/div")));
             IReadOnlyCollection<IWebElement> filterList = driver.FindElements(By.XPath("/html/body/header/div[3]/div[2]/aside/div[3]/div[2]/div/ul/li"));
-            foreach (IWebElement elem in filterList)
+            IWebElement phoneSelector = search4Smartphone(filterList);
+
+            if (phoneSelector != null)
             {
-                if (elem.Text.Contains("Smartphone/")) {
-                    elem.Click();
-                    break;
-                }
+                phoneSelector.Click();
             }
+            else
+            {
+                driver.FindElement(By.XPath("/html/body/header/div[3]/div[2]/aside/div[3]/div[2]/div/button")).Click();
+                IReadOnlyCollection<IWebElement> filterAlt = driver.FindElements(By.XPath("/html/body/header/div[3]/div[2]/aside/div[3]/div[2]/div/ul/li"));
+                phoneSelector = search4Smartphone(filterAlt);
+                phoneSelector.Click();
+            }
+
+                //"/html/body/header/div[3]/div[2]/aside/div[3]/div[2]/div/button"
 
             System.Threading.Thread.Sleep(3000);
             IReadOnlyCollection<IWebElement> smartCollection = driver.FindElements(By.ClassName("pcc-search-card"));
@@ -54,8 +75,11 @@ namespace SeleniumPractica
             {
                 try
                 {
-                    Telefono current = new Telefono(elem.FindElement(By.ClassName("title")).Text, elem.FindElement(By.ClassName("price")).Text);
-                    result.Add(current);
+                    if (elem.Text.Contains(marca) && elem.Text.Contains(modelo))
+                    {
+                        Telefono current = new Telefono(elem.FindElement(By.ClassName("title")).Text, elem.FindElement(By.ClassName("price")).Text);
+                        result.Add(current);
+                    }
                 }
                 catch (Exception e) { Console.WriteLine("Exception: " + e.Message); }
             }

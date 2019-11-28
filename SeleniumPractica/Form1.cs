@@ -34,11 +34,11 @@ namespace SeleniumPractica
         {
             String sModelo = modelo.Text;
             String sMarca = marcas.SelectedItem.ToString();
-            IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
+            IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
             if (amazonCheck.Checked)
             {
                 AmazonSearch amazon = new AmazonSearch(driver);
-                List<Telefono> telefonosAmazon = amazon.Search(sMarca, sModelo);
+                amazon.Search(sMarca, sModelo );
 
             }
 

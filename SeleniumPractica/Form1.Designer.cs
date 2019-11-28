@@ -104,9 +104,7 @@
             this.marcas.Name = "marcas";
             this.marcas.Size = new System.Drawing.Size(192, 24);
             this.marcas.TabIndex = 4;
-            this.marcas.Text = "Selecciona una marca";
-            this.marcas.SelectedIndexChanged += new System.EventHandler(this.marcas_SelectedIndexChanged);
-            // 
+            this.marcas.Text = "Selecciona una marca";            // 
             // botonBuscar
             // 
             this.botonBuscar.AccessibleName = "botonBuscar";
@@ -126,9 +124,7 @@
             this.resultList.Location = new System.Drawing.Point(56, 157);
             this.resultList.Name = "resultList";
             this.resultList.Size = new System.Drawing.Size(1228, 548);
-            this.resultList.TabIndex = 6;
-            this.resultList.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
+            this.resultList.TabIndex = 6;            // 
             // modelErrorLabel
             // 
             this.modelErrorLabel.AutoSize = true;
@@ -137,7 +133,6 @@
             this.modelErrorLabel.Size = new System.Drawing.Size(0, 17);
             this.modelErrorLabel.TabIndex = 7;
             this.modelErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.modelErrorLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // checkboxErrorLabel
             // 

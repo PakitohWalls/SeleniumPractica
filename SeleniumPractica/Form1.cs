@@ -50,7 +50,8 @@ namespace SeleniumPractica
             resultList.DataSource = null;
             result.Clear();
 
-            IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
+            IWebDriver driver = new ChromeDriver("C:\\Users\\tomas\\Desktop\\SeleniumPractica\\SeleniumPractica");
+            //tomas - C:\Users\tomas\Desktop\SeleniumPractica\SeleniumPractica
             String sMarca = marcas.SelectedItem.ToString();
             String sModelo = modelo.Text.Equals("Selecciona un modelo") ? "" : marcas.SelectedItem.ToString();
 
@@ -62,8 +63,9 @@ namespace SeleniumPractica
             }
 
             if (fnacCheck.Checked)
-            { 
-                 //Va Tomás hostiaa
+            {
+                FnacSearch fnac = new FnacSearch(driver);
+                List<Telefono> telefonosFnac = fnac.Search(sMarca, sModelo);
             }
 
             if (PcComponentesCheck.Checked)

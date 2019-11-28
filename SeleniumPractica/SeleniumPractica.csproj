@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmazonSearch.cs" />
+    <Compile Include="FnacSearch.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

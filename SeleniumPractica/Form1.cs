@@ -33,6 +33,9 @@ namespace SeleniumPractica
 
         private void botonBuscar_Click(object sender, EventArgs e)
         {
+            DataGridViewCellStyle style = new DataGridViewCellStyle();
+            style.Font = new Font(resultGrid.Font, FontStyle.Bold);
+
             if (marcas.SelectedItem is null)
             {
                 modelErrorLabel.Text = "Debes seleccionar una marca";
@@ -62,7 +65,8 @@ namespace SeleniumPractica
                 List<Telefono> telefonosAmazon = amazon.Search(sMarca, sModelo);
                 if (telefonosAmazon != null)
                 {
-                    resultGrid.Rows.Add("Resultados de Amazon:");
+                    int row = resultGrid.Rows.Add("Resultados de Amazon:");
+                    resultGrid.Rows[row].DefaultCellStyle = style;
                     populateGrid(telefonosAmazon);
                 }
                 else { resultGrid.Rows.Add("Sin resultados en Amazon"); }
@@ -75,7 +79,8 @@ namespace SeleniumPractica
                 List<Telefono> telefonosFnac = fnac.Search(sMarca, sModelo);
                 if (telefonosFnac.Count() != 0)
                 {
-                    resultGrid.Rows.Add("Resultados de FNAC:");
+                    int row = resultGrid.Rows.Add("Resultados de FNAC:");
+                    resultGrid.Rows[row].DefaultCellStyle = style;
                     populateGrid(telefonosFnac);
                 }
                 else { resultGrid.Rows.Add("Sin resultados en FNAC"); }
@@ -87,7 +92,8 @@ namespace SeleniumPractica
                 List<Telefono> telefonosPcComp  = pcc.search(sMarca, sModelo);
                 if (telefonosPcComp.Count() != 0)
                 {
-                    resultGrid.Rows.Add("Resultados de PcComponentes:");
+                    int row = resultGrid.Rows.Add("Resultados de PcComponentes:");
+                    resultGrid.Rows[row].DefaultCellStyle = style;
                     populateGrid(telefonosPcComp);
                 }
                 else { resultGrid.Rows.Add("Sin resultados en PcComponentes"); }

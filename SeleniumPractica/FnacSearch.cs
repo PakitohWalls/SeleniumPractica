@@ -79,7 +79,6 @@ namespace SeleniumPractica
                 list.Add(new Telefono(modelo, precio, precioAnterior));
                 //list.Add(new Telefono(nombre, precio));
             }
-            driver.Quit();
             return list;
         }  
     }

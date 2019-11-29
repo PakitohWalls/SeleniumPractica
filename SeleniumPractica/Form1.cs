@@ -48,8 +48,8 @@ namespace SeleniumPractica
             resultGrid.Rows.Clear();
 
             //IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
-            IWebDriver driver = new ChromeDriver("C:\\Users\\tomas\\Desktop\\SeleniumPractica\\SeleniumPractica");
-            //IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
+            //IWebDriver driver = new ChromeDriver("C:\\Users\\tomas\\Desktop\\SeleniumPractica\\SeleniumPractica");
+            IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
             driver.Manage().Window.Maximize();
             String sMarca = marcas.SelectedItem.ToString();
             String sModelo = modelo.Text.Equals("Selecciona un modelo") ? "" : modelo.Text;
@@ -65,24 +65,29 @@ namespace SeleniumPractica
 
             }
 
+            IWebDriver driver2 = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
+
+
             if (fnacCheck.Checked)
             {
-                FnacSearch fnac = new FnacSearch(driver);
+                FnacSearch fnac = new FnacSearch(driver2);
                 List<Telefono> telefonosFnac = fnac.Search(sMarca, sModelo);
 
                 if (telefonosFnac.Count() != 0)
                 {
                     foreach (Telefono telf in telefonosFnac)
                     {
-                        result.Add(telf.ToString());
+                        resultGrid.Rows.Add(telf.ToString());
                     }
                 }
-                else { result.Add("Sin resultados en PcComponentes"); }
+                else { resultGrid.Rows.Add("Sin resultados en PcComponentes"); }
             }
+
+            IWebDriver driver3 = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
 
             if (PcComponentesCheck.Checked)
             {
-                PcCompSearch pcc = new PcCompSearch(driver);
+                PcCompSearch pcc = new PcCompSearch(driver3);
                 List<Telefono> telefonosPcComp  = pcc.search(sMarca, sModelo);
                 if (telefonosPcComp.Count() != 0)
                 {

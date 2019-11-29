@@ -29,9 +29,15 @@ namespace SeleniumPractica
             IWebElement searchButton = driver.FindElement(By.XPath("/html/body/div[1]/header/div[2]/div[1]/form/div[2]/div/button"));
             searchButton.Click();
 
-            IWebElement movilesFilter = (new WebDriverWait(driver, TimeSpan.FromSeconds(20)))
-                .Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[2]/div[1]/div/div[1]/div[2]/ul/li[1]/ul/li[1]/span"))); 
-            movilesFilter.Click();
+            try
+            {
+                //#col_gauche > div > div.nav > div.content > ul > li > ul > li:nth-child(1) > span
+                IWebElement movilesFilter = (new WebDriverWait(driver, TimeSpan.FromSeconds(20)))
+                .Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("#col_gauche > div > div.nav > div.content > ul > li > ul > li:nth-child(1) > span")));
+                movilesFilter.Click();
+            }
+            catch(Exception e) { Console.WriteLine("No se pudo encontrar cateogia"); }
+                        
 
             System.Threading.Thread.Sleep(3000);
 

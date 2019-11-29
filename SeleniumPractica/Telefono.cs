@@ -18,7 +18,7 @@ namespace SeleniumPractica {
 
         public string ToString()
         {
-            return this.Modelo + " " + this.Precio;
+            return this.Modelo + " / Precio: " + this.Precio + " / " + this.PrecioAnterior;
         }
     }
 

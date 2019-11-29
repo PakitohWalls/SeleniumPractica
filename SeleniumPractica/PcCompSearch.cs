@@ -95,7 +95,6 @@ namespace SeleniumPractica
                 Telefono phone = new Telefono(name = elem.FindElement(By.ClassName("tarjeta-articulo__nombre")).Text, currentPrice = elemPrice.FindElement(By.ClassName("tarjeta-articulo__precio-actual")).Text, beforePrice);
                 result.Add(phone);
             }
-            driver.Quit();
             return result;
         }
     }

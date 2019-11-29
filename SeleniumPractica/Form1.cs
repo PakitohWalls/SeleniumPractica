@@ -62,8 +62,10 @@ namespace SeleniumPractica
                 List<Telefono> telefonosAmazon = amazon.Search(sMarca, sModelo);
                 if (telefonosAmazon != null)
                 {
+                    resultGrid.Rows.Add("Resultados de Amazon:");
                     populateGrid(telefonosAmazon);
                 }
+                else { resultGrid.Rows.Add("Sin resultados en Amazon"); }
 
             }
 
@@ -73,6 +75,7 @@ namespace SeleniumPractica
                 List<Telefono> telefonosFnac = fnac.Search(sMarca, sModelo);
                 if (telefonosFnac.Count() != 0)
                 {
+                    resultGrid.Rows.Add("Resultados de FNAC:");
                     populateGrid(telefonosFnac);
                 }
                 else { resultGrid.Rows.Add("Sin resultados en FNAC"); }
@@ -84,15 +87,12 @@ namespace SeleniumPractica
                 List<Telefono> telefonosPcComp  = pcc.search(sMarca, sModelo);
                 if (telefonosPcComp.Count() != 0)
                 {
+                    resultGrid.Rows.Add("Resultados de PcComponentes:");
                     populateGrid(telefonosPcComp);
                 }
                 else { resultGrid.Rows.Add("Sin resultados en PcComponentes"); }
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            driver.Quit();
         }
     }
 }

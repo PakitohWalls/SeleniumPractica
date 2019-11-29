@@ -22,29 +22,27 @@ namespace SeleniumPractica
         {
             List<Telefono> list = new List<Telefono>();
 
-            WebDriverWait initWait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            initWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/header/div[2]/div[1]/form/div[2]/div/input[1]"))).SendKeys(marca + " " + modelo);
+            WebDriverWait busqueda = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            busqueda.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/header/div[2]/div[1]/form/div[2]/div/input[1]"))).SendKeys(marca + " " + modelo);
 
             IWebElement searchButton = driver.FindElement(By.XPath("/html/body/div[1]/header/div[2]/div[1]/form/div[2]/div/button"));
             searchButton.Click();
 
-            WebDriverWait lateWait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            lateWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[2]/div[1]/div/div[1]/div[2]/ul/li[1]/ul/li[1]/span"))).Click();
+            WebDriverWait moviles = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            moviles.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[2]/div[1]/div/div[1]/div[2]/ul/li[1]/ul/li[1]/span"))).Click();
 
-            IReadOnlyCollection<IWebElement> listaElementos = driver.FindElements(By.ClassName("Article-item")).ToList();
+            WebDriverWait lista = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            lista.Until(ExpectedConditions.ElementIsVisible(By.ClassName("Article-item")));
 
-            foreach (IWebElement elem in listaElementos)
+            List<IWebElement> elementos = driver.FindElements(By.ClassName("Article-item")).ToList();
+
+            foreach (IWebElement elem in elementos)
             {
-                //Console.WriteLine(elem.FindElement(By.ClassName(".userPrice")));
                 string nombre = elem.FindElement(By.ClassName("Article-title")).Text;
-                //string precio = elem.FindElement(By.ClassName("userPrice")).Text;
-                //Console.WriteLine(elem.FindElement(By.ClassName(".Article-desc")).Text);
+                string precio = elem.FindElement(By.ClassName("userPrice")).Text;
                 Console.WriteLine(nombre);
                 //list.Add(new Telefono(nombre, precio));
             }
-
-            driver.Quit();
-
             return list;
         }
     }

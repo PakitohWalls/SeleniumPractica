@@ -22,28 +22,59 @@ namespace SeleniumPractica
         {
             List<Telefono> list = new List<Telefono>();
 
-            WebDriverWait busqueda = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            busqueda.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/header/div[2]/div[1]/form/div[2]/div/input[1]"))).SendKeys(marca + " " + modelo);
+            IWebElement search = (new WebDriverWait(driver, TimeSpan.FromSeconds(20)))
+                .Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/header/div[2]/div[1]/form/div[2]/div/input[1]")));
+            search.SendKeys(marca + " " + modelo);
 
             IWebElement searchButton = driver.FindElement(By.XPath("/html/body/div[1]/header/div[2]/div[1]/form/div[2]/div/button"));
             searchButton.Click();
 
-            WebDriverWait moviles = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            moviles.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[2]/div[1]/div/div[1]/div[2]/ul/li[1]/ul/li[1]/span"))).Click();
+            IWebElement movilesFilter = (new WebDriverWait(driver, TimeSpan.FromSeconds(20)))
+                .Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[2]/div[1]/div/div[1]/div[2]/ul/li[1]/ul/li[1]/span"))); 
+            movilesFilter.Click();
 
-            WebDriverWait lista = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            lista.Until(ExpectedConditions.ElementIsVisible(By.ClassName("Article-item")));
+            System.Threading.Thread.Sleep(3000);
+
+            WebDriverWait lista = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            lista.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.ClassName("Article-item")));
 
             List<IWebElement> elementos = driver.FindElements(By.ClassName("Article-item")).ToList();
+            Console.WriteLine(elementos.Count);
 
             foreach (IWebElement elem in elementos)
             {
                 string nombre = elem.FindElement(By.ClassName("Article-title")).Text;
-                string precio = elem.FindElement(By.ClassName("userPrice")).Text;
+                string precio = string.Empty;
+                string precioAnterior = string.Empty;
                 Console.WriteLine(nombre);
+
+                try
+                {
+                    precio = elem.FindElement(By.ClassName("price'")).Text;
+                } 
+                catch (Exception) 
+                {
+                    try
+                    {
+                        precio = elem.FindElement(By.ClassName("userPrice")).Text;
+                    } 
+                    catch (Exception) { }
+                }
+
+                try
+                {
+                    precioAnterior = elem.FindElement(By.ClassName("oldPrice")).Text;
+                }
+                catch (Exception)
+                {
+                    precioAnterior = "No tiene rebaja";
+                }
+
+                list.Add(new Telefono(modelo, precio, precioAnterior));
                 //list.Add(new Telefono(nombre, precio));
             }
+            driver.Quit();
             return list;
-        }
+        }  
     }
 }

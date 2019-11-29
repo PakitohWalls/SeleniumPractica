@@ -34,7 +34,6 @@
             this.modelo = new System.Windows.Forms.TextBox();
             this.marcas = new System.Windows.Forms.ComboBox();
             this.botonBuscar = new System.Windows.Forms.Button();
-            this.resultList = new System.Windows.Forms.ListBox();
             this.modelErrorLabel = new System.Windows.Forms.Label();
             this.checkboxErrorLabel = new System.Windows.Forms.Label();
             this.resultGrid = new System.Windows.Forms.DataGridView();
@@ -121,15 +120,6 @@
             this.botonBuscar.UseVisualStyleBackColor = true;
             this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
-            // resultList
-            // 
-            this.resultList.FormattingEnabled = true;
-            this.resultList.ItemHeight = 16;
-            this.resultList.Location = new System.Drawing.Point(1021, 45);
-            this.resultList.Name = "resultList";
-            this.resultList.Size = new System.Drawing.Size(263, 660);
-            this.resultList.TabIndex = 6;
-            // 
             // modelErrorLabel
             // 
             this.modelErrorLabel.AutoSize = true;
@@ -191,7 +181,6 @@
             this.Controls.Add(this.resultGrid);
             this.Controls.Add(this.checkboxErrorLabel);
             this.Controls.Add(this.modelErrorLabel);
-            this.Controls.Add(this.resultList);
             this.Controls.Add(this.botonBuscar);
             this.Controls.Add(this.marcas);
             this.Controls.Add(this.modelo);
@@ -215,7 +204,6 @@
         private System.Windows.Forms.TextBox modelo;
         private System.Windows.Forms.ComboBox marcas;
         private System.Windows.Forms.Button botonBuscar;
-        private System.Windows.Forms.ListBox resultList;
         private System.Windows.Forms.Label modelErrorLabel;
         private System.Windows.Forms.Label checkboxErrorLabel;
         private System.Windows.Forms.DataGridView resultGrid;

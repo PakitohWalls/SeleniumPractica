@@ -47,8 +47,8 @@ namespace SeleniumPractica
 
             resultGrid.Rows.Clear();
 
-            //IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
-            IWebDriver driver = new ChromeDriver("C:\\Users\\tomas\\Desktop\\SeleniumPractica\\SeleniumPractica");
+            IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
+            //IWebDriver driver = new ChromeDriver("C:\\Users\\tomas\\Desktop\\SeleniumPractica\\SeleniumPractica");
             //IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
             driver.Manage().Window.Maximize();
             String sMarca = marcas.SelectedItem.ToString();
@@ -69,15 +69,11 @@ namespace SeleniumPractica
             {
                 FnacSearch fnac = new FnacSearch(driver);
                 List<Telefono> telefonosFnac = fnac.Search(sMarca, sModelo);
-
                 if (telefonosFnac.Count() != 0)
                 {
-                    foreach (Telefono telf in telefonosFnac)
-                    {
-                        result.Add(telf.ToString());
-                    }
+                    populateGrid(telefonosFnac);
                 }
-                else { result.Add("Sin resultados en PcComponentes"); }
+                else { resultGrid.Rows.Add("Sin resultados en FNAC"); }
             }
 
             if (PcComponentesCheck.Checked)

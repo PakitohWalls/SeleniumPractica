@@ -9,6 +9,7 @@ namespace SeleniumPractica {
         public String Precio { get; set; }
 
         public String PrecioAnterior { get; set; }
+
         public Telefono(String Modelo, String Precio, String PrecioAnterior = "")
         {
             this.Modelo = Modelo;

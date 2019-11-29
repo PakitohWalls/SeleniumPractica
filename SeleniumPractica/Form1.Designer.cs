@@ -37,6 +37,11 @@
             this.resultList = new System.Windows.Forms.ListBox();
             this.modelErrorLabel = new System.Windows.Forms.Label();
             this.checkboxErrorLabel = new System.Windows.Forms.Label();
+            this.resultGrid = new System.Windows.Forms.DataGridView();
+            this.nombreCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noDiscountCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // amazonCheck
@@ -50,7 +55,6 @@
             this.amazonCheck.TabIndex = 0;
             this.amazonCheck.Text = "Amazon";
             this.amazonCheck.UseVisualStyleBackColor = true;
-            this.amazonCheck.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // fnacCheck
             // 
@@ -63,7 +67,6 @@
             this.fnacCheck.TabIndex = 1;
             this.fnacCheck.Text = "FNAC";
             this.fnacCheck.UseVisualStyleBackColor = true;
-            this.fnacCheck.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // PcComponentesCheck
             // 
@@ -104,7 +107,8 @@
             this.marcas.Name = "marcas";
             this.marcas.Size = new System.Drawing.Size(192, 24);
             this.marcas.TabIndex = 4;
-            this.marcas.Text = "Selecciona una marca";            // 
+            this.marcas.Text = "Selecciona una marca";
+            // 
             // botonBuscar
             // 
             this.botonBuscar.AccessibleName = "botonBuscar";
@@ -121,10 +125,11 @@
             // 
             this.resultList.FormattingEnabled = true;
             this.resultList.ItemHeight = 16;
-            this.resultList.Location = new System.Drawing.Point(56, 157);
+            this.resultList.Location = new System.Drawing.Point(1021, 45);
             this.resultList.Name = "resultList";
-            this.resultList.Size = new System.Drawing.Size(1228, 548);
-            this.resultList.TabIndex = 6;            // 
+            this.resultList.Size = new System.Drawing.Size(263, 660);
+            this.resultList.TabIndex = 6;
+            // 
             // modelErrorLabel
             // 
             this.modelErrorLabel.AutoSize = true;
@@ -143,11 +148,47 @@
             this.checkboxErrorLabel.TabIndex = 8;
             this.checkboxErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // resultGrid
+            // 
+            this.resultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resultGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nombreCol,
+            this.precioCol,
+            this.noDiscountCol});
+            this.resultGrid.Location = new System.Drawing.Point(56, 183);
+            this.resultGrid.Name = "resultGrid";
+            this.resultGrid.RowHeadersWidth = 51;
+            this.resultGrid.RowTemplate.Height = 24;
+            this.resultGrid.Size = new System.Drawing.Size(894, 313);
+            this.resultGrid.TabIndex = 9;
+            // 
+            // nombreCol
+            // 
+            this.nombreCol.HeaderText = "Nombre";
+            this.nombreCol.MinimumWidth = 6;
+            this.nombreCol.Name = "nombreCol";
+            this.nombreCol.Width = 125;
+            // 
+            // precioCol
+            // 
+            this.precioCol.HeaderText = "Precio";
+            this.precioCol.MinimumWidth = 6;
+            this.precioCol.Name = "precioCol";
+            this.precioCol.Width = 125;
+            // 
+            // noDiscountCol
+            // 
+            this.noDiscountCol.HeaderText = "Sin descuento";
+            this.noDiscountCol.MinimumWidth = 6;
+            this.noDiscountCol.Name = "noDiscountCol";
+            this.noDiscountCol.Width = 125;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1359, 804);
+            this.Controls.Add(this.resultGrid);
             this.Controls.Add(this.checkboxErrorLabel);
             this.Controls.Add(this.modelErrorLabel);
             this.Controls.Add(this.resultList);
@@ -160,6 +201,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "<";
+            ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,6 +218,10 @@
         private System.Windows.Forms.ListBox resultList;
         private System.Windows.Forms.Label modelErrorLabel;
         private System.Windows.Forms.Label checkboxErrorLabel;
+        private System.Windows.Forms.DataGridView resultGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noDiscountCol;
     }
 }
 

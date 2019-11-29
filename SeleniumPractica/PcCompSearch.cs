@@ -87,8 +87,8 @@ namespace SeleniumPractica
                 IWebElement elemPrice = elem.FindElement(By.ClassName("tarjeta-articulo__precios"));
                 try 
                 {
-                    beforePrice = " Sin descuento: " + elemPrice.FindElement(By.ClassName("tarjeta-articulo__pvp-y-dto")).FindElement(By.ClassName("tarjeta-articulo__pvp")).Text;
-                } catch (Exception) { beforePrice = " Este artículo no tiene descuento"; }
+                    beforePrice = elemPrice.FindElement(By.ClassName("tarjeta-articulo__pvp-y-dto")).FindElement(By.ClassName("tarjeta-articulo__pvp")).Text;
+                } catch (Exception) { beforePrice = "Este artículo no tiene descuento"; }
                 Telefono phone = new Telefono(name = elem.FindElement(By.ClassName("tarjeta-articulo__nombre")).Text, currentPrice = elemPrice.FindElement(By.ClassName("tarjeta-articulo__precio-actual")).Text, beforePrice);
                 result.Add(phone);
             }

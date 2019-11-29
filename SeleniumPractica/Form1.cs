@@ -22,8 +22,7 @@ namespace SeleniumPractica
 
         public void populateGrid(List<Telefono> resultPhones)
         {
-            DataGridViewColumn column = resultGrid.Columns[0];
-            column.Width = 150;
+            resultGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             foreach (Telefono phone in resultPhones)
             {
                 String[] row = {phone.Modelo, phone.Precio, phone.PrecioAnterior};

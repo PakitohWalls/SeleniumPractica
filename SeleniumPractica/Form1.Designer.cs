@@ -149,7 +149,7 @@
             this.resultGrid.Name = "resultGrid";
             this.resultGrid.RowHeadersWidth = 51;
             this.resultGrid.RowTemplate.Height = 24;
-            this.resultGrid.Size = new System.Drawing.Size(894, 313);
+            this.resultGrid.Size = new System.Drawing.Size(1103, 324);
             this.resultGrid.TabIndex = 9;
             // 
             // nombreCol
@@ -177,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1359, 804);
+            this.ClientSize = new System.Drawing.Size(1200, 556);
             this.Controls.Add(this.resultGrid);
             this.Controls.Add(this.checkboxErrorLabel);
             this.Controls.Add(this.modelErrorLabel);

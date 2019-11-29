@@ -14,7 +14,7 @@ namespace SeleniumPractica
 {
     public partial class Form1 : Form
     {
-        List<Telefono> resultPhones = new List<Telefono>();        
+        List<Telefono> resultPhones = new List<Telefono>();
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +22,8 @@ namespace SeleniumPractica
 
         public void populateGrid(List<Telefono> resultPhones)
         {
+            DataGridViewColumn column = resultGrid.Columns[0];
+            column.Width = 150;
             foreach (Telefono phone in resultPhones)
             {
                 String[] row = {phone.Modelo, phone.Precio, phone.PrecioAnterior};
@@ -47,9 +49,9 @@ namespace SeleniumPractica
 
             resultGrid.Rows.Clear();
 
-            //IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
+            IWebDriver driver = new ChromeDriver("D:\\Escritorio\\IEI - Pract 2\\SeleniumPractica\\SeleniumPractica");
             //IWebDriver driver = new ChromeDriver("C:\\Users\\tomas\\Desktop\\SeleniumPractica\\SeleniumPractica");
-            IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
+            //IWebDriver driver = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
             driver.Manage().Window.Maximize();
             String sMarca = marcas.SelectedItem.ToString();
             String sModelo = modelo.Text.Equals("Selecciona un modelo") ? "" : modelo.Text;
@@ -65,29 +67,20 @@ namespace SeleniumPractica
 
             }
 
-            IWebDriver driver2 = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
-
-
             if (fnacCheck.Checked)
             {
-                FnacSearch fnac = new FnacSearch(driver2);
+                FnacSearch fnac = new FnacSearch(driver);
                 List<Telefono> telefonosFnac = fnac.Search(sMarca, sModelo);
-
                 if (telefonosFnac.Count() != 0)
                 {
-                    foreach (Telefono telf in telefonosFnac)
-                    {
-                        resultGrid.Rows.Add(telf.ToString());
-                    }
+                    populateGrid(telefonosFnac);
                 }
-                else { resultGrid.Rows.Add("Sin resultados en PcComponentes"); }
+                else { resultGrid.Rows.Add("Sin resultados en FNAC"); }
             }
-
-            IWebDriver driver3 = new ChromeDriver("C:\\Users\\Paco Paredes\\source\\repos\\SeleniumPractica\\SeleniumPractica");
 
             if (PcComponentesCheck.Checked)
             {
-                PcCompSearch pcc = new PcCompSearch(driver3);
+                PcCompSearch pcc = new PcCompSearch(driver);
                 List<Telefono> telefonosPcComp  = pcc.search(sMarca, sModelo);
                 if (telefonosPcComp.Count() != 0)
                 {
@@ -95,6 +88,11 @@ namespace SeleniumPractica
                 }
                 else { resultGrid.Rows.Add("Sin resultados en PcComponentes"); }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

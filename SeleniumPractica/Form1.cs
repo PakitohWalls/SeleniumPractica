@@ -14,7 +14,7 @@ namespace SeleniumPractica
 {
     public partial class Form1 : Form
     {
-        List<Telefono> resultPhones = new List<Telefono>();        
+        List<Telefono> resultPhones = new List<Telefono>();
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +22,8 @@ namespace SeleniumPractica
 
         public void populateGrid(List<Telefono> resultPhones)
         {
+            DataGridViewColumn column = resultGrid.Columns[0];
+            column.Width = 150;
             foreach (Telefono phone in resultPhones)
             {
                 String[] row = {phone.Modelo, phone.Precio, phone.PrecioAnterior};
@@ -86,6 +88,11 @@ namespace SeleniumPractica
                 }
                 else { resultGrid.Rows.Add("Sin resultados en PcComponentes"); }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

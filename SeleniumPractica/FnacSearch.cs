@@ -73,7 +73,7 @@ namespace SeleniumPractica
                 }
                 catch (Exception)
                 {
-                    precioAnterior = "No tiene rebaja";
+                    precioAnterior = "Este artículo no tiene descuento";
                 }
 
                 list.Add(new Telefono(modelo, precio, precioAnterior));

@@ -29,7 +29,7 @@ namespace SeleniumPractica
             {
                 try
                 {
-                    String PrecioAnterior = "";
+                    String PrecioAnterior = "Este artículo no tiene descuento";
                     try
                     {//div/span/div/div/div[2]/div[2]/div/div[2]/div[1]/div/div[1]/div[1]/div/a/span[2]/span[2] //Precio original (de catalogo) normal
                         PrecioAnterior = elem.FindElement(By.CssSelector("div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > span:nth-child(2) > span:nth-child(2)")).Text;

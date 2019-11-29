@@ -70,10 +70,16 @@ namespace SeleniumPractica
 
             IReadOnlyCollection<IWebElement> filter1 = driver.FindElements(By.ClassName("acc-block-title"));
             IWebElement filter1Found = search4Smartphone(filter1, "SMARTPHONES/GPS");
-            String expanded = filter1Found.GetAttribute("aria-expanded");
-            if (filter1Found.Equals("true")) { 
-                filter1Found.Click();
-            }
+            try
+            {
+                String expanded = filter1Found.FindElement(By.CssSelector("a.collapsed")).GetAttribute("aria-expanded");
+                if (expanded.Equals("false"))
+                {
+                    Console.WriteLine("Entra");
+                    filter1Found.Click();
+                }
+            } catch (Exception) { }
+           
 
             WebDriverWait wait1 = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             IReadOnlyCollection<IWebElement> filter2 = driver.FindElements(By.ClassName("acc-block-body")); 
